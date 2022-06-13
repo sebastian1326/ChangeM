@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ChangeM</string>
+    <string name="valor_c" />
+    <string name="value_c">Cantidad a convertir</string>
+    <string name="text_d">Desde</string>
+    <string name="text_t">"  Conversión de Moneda"</string>
+    <string name="button_c">convertir</string>
+    <string name="imag_a">n</string>
+    <string-array name="moneda">
+        <item>Dolar</item>
+        <item>Peso Colombiano</item>
+        <item>Peso Mexicano</item>
+    </string-array>
+</resources>

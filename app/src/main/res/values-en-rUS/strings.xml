@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ChangeM</string>
+    <string name="valor_c" />
+    <string name="value_c">Amount to Convert</string>
+    <string name="text_d">Since</string>
+    <string name="text_t">"  Currency Conversion"</string>
+    <string name="button_c">Conversion</string>
+    <string name="imag_a">n</string>
+    <string-array name="moneda">
+        <item>Dolar</item>
+        <item>Colombian peso</item>
+        <item>Mexican peso</item>
+    </string-array>
+</resources>
