@@ -1,17 +1,17 @@
 package com.lopezing.changem.ui.Main
 
-import android.app.Activity
-import android.content.Intent
+//import android.app.Activity
+//import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
+//import androidx.lifecycle.ViewModelStoreOwner
 import com.lopezing.changem.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mainViewModel: MainViewModel
     private lateinit var mainBinding: ActivityMainBinding
-    private var acum1=0.0
+//    private var acum1=0.0
     private var m1spinner="Dolar"
     private var m2spinner="Dolar"
     //private var cant =1
@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         val view = mainBinding.root
         mainViewModel= ViewModelProvider(this).get(MainViewModel::class.java)
+        mainViewModel.counterdata.observe(this,{counter->
+            mainBinding.textView.text=counter.toString()
+        })
         setContentView(view)
         with(mainBinding){
             button.setOnClickListener {
@@ -27,9 +30,9 @@ class MainActivity : AppCompatActivity() {
                 m2spinner=spinner2.selectedItem.toString()
                 val cant =textIn.text.toString()
                 val cant1=cant.toDouble()
-                acum1=mainViewModel.conv(m1spinner,m2spinner)
-                val imp1=mainViewModel.datain(cant1,acum1)
-                textView.text=imp1.toString()
+                mainViewModel.conv(m1spinner,m2spinner)
+                mainViewModel.datain(cant1)
+                //textView.text=imp1.toString()
                 //textView.text=m2spinner
             }
         }

@@ -1,5 +1,7 @@
 package com.lopezing.changem.ui.Main
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlin.contracts.Returns
 
@@ -8,12 +10,15 @@ class MainViewModel: ViewModel(){
     private var m1spinner="Dolar"
     private var m2spinner="Dolar"
     private var acum1=0.0
+    private val counter:MutableLiveData<Double> = MutableLiveData()
+    val counterdata: LiveData<Double> = counter
 
-    fun datain(x: Double,y:Double): Double {
-        imp=(x*y)
-        return imp
+
+    fun datain(x: Double){
+        counter.value=(x*acum1)
+
     }
-     fun conv(x:String,y:String): Double{
+     fun conv(x:String,y:String){
          m2spinner=y
          m1spinner=x
         when(m1spinner) {
@@ -44,6 +49,5 @@ class MainViewModel: ViewModel(){
                 if (m2spinner == "Peso Mexicano" || m2spinner == "Mexican peso")acum1 = 1.0
             }
         }
-         return acum1
     }
 }
