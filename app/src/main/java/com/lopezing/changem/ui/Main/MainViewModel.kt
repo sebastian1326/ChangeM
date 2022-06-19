@@ -1,17 +1,21 @@
-package com.lopezing.changem
+package com.lopezing.changem.ui.Main
 
-import android.app.Activity
-import android.os.Bundle
-import com.lopezing.changem.databinding.ActivityMainBinding
+import androidx.lifecycle.ViewModel
+import kotlin.contracts.Returns
 
-class MainActivity : Activity() {
-    private lateinit var mainBinding: ActivityMainBinding
-    private var acum1=0.0
+class MainViewModel: ViewModel(){
     private var imp=0.0
-    //private var cant =1
     private var m1spinner="Dolar"
     private var m2spinner="Dolar"
-    private fun conv(){
+    private var acum1=0.0
+
+    fun datain(x: Double,y:Double): Double {
+        imp=(x*y)
+        return imp
+    }
+     fun conv(x:String,y:String): Double{
+         m2spinner=y
+         m1spinner=x
         when(m1spinner) {
             "Dolar" -> {
                 if (m2spinner == "Peso Colombiano" || m2spinner == "Colombian peso") acum1 = 3800.0
@@ -40,23 +44,6 @@ class MainActivity : Activity() {
                 if (m2spinner == "Peso Mexicano" || m2spinner == "Mexican peso")acum1 = 1.0
             }
         }
-    }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mainBinding = ActivityMainBinding.inflate(layoutInflater)
-        val view = mainBinding.root
-        setContentView(view)
-        with(mainBinding){
-            button.setOnClickListener {
-                m1spinner=spinner.selectedItem.toString()
-                m2spinner=spinner2.selectedItem.toString()
-                val cant =textIn.text.toString()
-                val cant1=cant.toDouble()
-                conv()
-                imp=(cant1*acum1)
-                textView.text=imp.toString()
-                //textView.text=m2spinner
-            }
-        }
+         return acum1
     }
 }
